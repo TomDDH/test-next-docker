@@ -21,7 +21,9 @@ export async function GET(request, res) {
 
   console.log(files)
 
-  return NextResponse.json({ files, directoryPath });;
+const workDir = path.join(process.cwd())
+
+  return NextResponse.json({ files, directoryPath,workDir });;
 
 }
 
@@ -35,10 +37,14 @@ export async function POST(request, res) {
   const directoryPath = path.join(__dirname);
   console.log(directoryPath)
 
+
+  const basePath = path.join(process.cwd(), 'mnt')
+  console.log(basePath)
+  // process.env.NODE_ENV === 'production'
   try {
     // Write the file to the specified directory (public/assets) with the modified filename
     await writeFile(
-      path.join('./mnt/', filename),
+      path.join(basePath, filename),
       buffer
     );
     // Return a JSON response with a success message and a 201 status code
