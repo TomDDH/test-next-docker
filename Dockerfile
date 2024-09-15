@@ -12,6 +12,11 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
+ADD https://neoxr.s3.dualstack.us-east-2.amazonaws.com/test/test-app-edf74-7aba881f4835.json google-cloud-key.json
+
+# Set the environment variable
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/google-cloud-key.json
+
 
 # Build the Next.js app
 RUN npm run build
