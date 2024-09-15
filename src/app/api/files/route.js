@@ -38,7 +38,7 @@ export async function POST(request, res) {
   console.log(directoryPath)
 
 
-  const basePath = path.join(process.cwd(), 'mnt')
+  const basePath = path.join(process.cwd(), '../mnt')
   console.log(basePath)
   // process.env.NODE_ENV === 'production'
   try {
